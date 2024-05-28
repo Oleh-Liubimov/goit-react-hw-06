@@ -5,16 +5,28 @@ import { useId } from "react";
 import { ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contactsSlice";
+import * as Yup from "yup";
 
-export default function ContactForm({ validation }) {
 
-    const dispatch = useDispatch();
+const objSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, "Too short!")
+    .max(50, "Too long!")
+    .required("Required")
+    .matches(/^[a-zA-Z]+$/, "Only Latin letters allowed"),
+  number: Yup.string()
+    .min(3, "Too short number!")
+    .max(12, "Too long!")
+    .required("Requaired"),
+});
 
+export default function ContactForm() {
+  const dispatch = useDispatch();
 
   const nameId = useId();
   const numberId = useId();
-    const handleSubmit = (values, actions) => {
-    dispatch(addContact(values))
+  const handleSubmit = (values, actions) => {
+    dispatch(addContact(values));
     actions.resetForm();
   };
 
@@ -22,7 +34,7 @@ export default function ContactForm({ validation }) {
     <Formik
       initialValues={{ name: "", number: "" }}
       onSubmit={handleSubmit}
-      validationSchema={validation}
+      validationSchema={objSchema}
     >
       <Form className="flex flex-col mb-5 border-2 border-black rounded p-5">
         <label htmlFor={nameId} className="font-medium">

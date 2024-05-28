@@ -1,30 +1,29 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Contact from "../Contact/Contact";
-import { getContacts, getFilterName, getFilteredContacts } from "../../redux/selectors";
-import { useEffect } from "react";
-import { setFilteredContacts } from "../../redux/filtersSlice";
+import {
+  getContacts,
+  getFilterName,
+} from "../../redux/selectors";
 
-/* eslint-disable react/prop-types */
-export default function ContactList({ onDelete }) {
 
-    const dispatch = useDispatch();
-    const contacts = useSelector(getContacts)
-    const filteredContacts = useSelector(getFilteredContacts);
-    const filterName = useSelector(getFilterName);
+export default function ContactList() {
+  const contacts = useSelector(getContacts);
+  const filterName = useSelector(getFilterName);
 
-    useEffect(() => {
-        const filtered = contacts.filter(contact => contact.name.toLowerCase().includes(filterName.toLowerCase()))
-        dispatch(setFilteredContacts(filtered))
-    },[contacts,filterName,dispatch])
-
+ 
+  const filteredContacts = () =>
+    contacts.filter(
+      (contact) =>
+        contact.name.toLowerCase().includes(filterName.toLowerCase()));
+   
 
   return (
     <ul className="flex gap-3 flex-wrap ">
-      {filteredContacts && filteredContacts.map((contact) => (
-        <li key={contact.id} className="">
-          <Contact data={contact} onDelete={onDelete} />
-        </li>
-      ))}
+      {filteredContacts().map((contact) => (
+          <li key={contact.id} className="">
+            <Contact data={contact} />
+          </li>
+        ))}
     </ul>
   );
 }

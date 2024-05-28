@@ -9,19 +9,11 @@ const filtersSlice = createSlice({
     reducers: {
         setFilterName(state, action) {
             state.name = action.payload
-        },
-        setFilteredContacts(state, action) {
-            state.filteredContacts = action.payload
-        },
-        // changeFilter(state, action) {
-        //    const filteredContacts = state.name.filter((contact) =>
-        //      contact.name.toLowerCase().includes(action.payload.toLowerCase())
-        //    );
-        //    return filteredContacts;  
-        // }
+        }
+
     }
 })
 
-export const { setFilterName, setFilteredContacts, } = filtersSlice.actions;
+export const { setFilterName } = filtersSlice.actions;
 export const filtersReducer = filtersSlice.reducer;
 

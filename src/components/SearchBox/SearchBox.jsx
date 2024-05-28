@@ -1,12 +1,15 @@
 /* eslint-disable react/prop-types */
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setFilterName } from "../../redux/filtersSlice";
+import { getFilterName } from "../../redux/selectors";
 
-export default function SearchBox({ value }) {
+export default function SearchBox() {
 
-
+    const value = useSelector(getFilterName)
     const dispatch = useDispatch();
+    
+
 
   return (
     <div>
