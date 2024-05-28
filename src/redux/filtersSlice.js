@@ -3,18 +3,25 @@ import { createSlice } from "@reduxjs/toolkit";
 const filtersSlice = createSlice({
     name: "filters",
     initialState: {
-        name:""
+        name: "",
+        filteredContacts:[]
     },
     reducers: {
-        changeFilter(state, action) {
-           const filteredContacts = state.name.filter((contact) =>
-             contact.name.toLowerCase().includes(action.payload.toLowerCase())
-           );
-           return filteredContacts;  
-        }
+        setFilterName(state, action) {
+            state.name = action.payload
+        },
+        setFilteredContacts(state, action) {
+            state.filteredContacts = action.payload
+        },
+        // changeFilter(state, action) {
+        //    const filteredContacts = state.name.filter((contact) =>
+        //      contact.name.toLowerCase().includes(action.payload.toLowerCase())
+        //    );
+        //    return filteredContacts;  
+        // }
     }
 })
 
-export const { changeFilter } = filtersSlice.actions;
+export const { setFilterName, setFilteredContacts, } = filtersSlice.actions;
 export const filtersReducer = filtersSlice.reducer;
 

@@ -1,17 +1,11 @@
 /* eslint-disable react/prop-types */
 
-import { useDispatch, useSelector } from "react-redux";
-import { getContacts } from "../../redux/selectors";
+import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contactsSlice";
 
-export default function Contact({ data ,onDelete }) {
+export default function Contact({ data  }) {
 
-    const contacts = useSelector(getContacts)
-    console.log(contacts);
     const dispatch = useDispatch();
-
-
-
       return (
     <div className="border border-black flex gap-6 max-w-80 items-center rounded p-2">
       <div className="w-full">

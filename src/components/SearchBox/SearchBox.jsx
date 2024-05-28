@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { useDispatch } from "react-redux";
-import { changeFilter } from "../../redux/filtersSlice";
+import { setFilterName } from "../../redux/filtersSlice";
 
 export default function SearchBox({ value }) {
 
@@ -14,7 +14,7 @@ export default function SearchBox({ value }) {
       <input
         type="text"
         value={value}
-        onChange={(e) => dispatch(changeFilter(e.target.value))}
+        onChange={(e) => dispatch(setFilterName(e.target.value))}
         className="border border-black rounded mb-5 outline-none "
       />
     </div>
