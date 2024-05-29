@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { Formik, Form, Field } from "formik";
-import { nanoid } from "nanoid";
 import { useId } from "react";
 import { ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
