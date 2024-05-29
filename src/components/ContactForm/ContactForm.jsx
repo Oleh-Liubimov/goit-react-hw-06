@@ -56,7 +56,7 @@ export default function ContactForm() {
           Number
         </label>
         <Field
-          type="number"
+          type="text"
           name="number"
           id={numberId}
           className="border border-black rounded outline-none mb-5 "

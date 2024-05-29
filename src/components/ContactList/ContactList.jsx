@@ -14,7 +14,7 @@ export default function ContactList() {
   const filteredContacts = () =>
     contacts.filter(
       (contact) =>
-        contact.name.toLowerCase().includes(filterName.toLowerCase()));
+        contact.name.toLowerCase().includes(filterName.toLowerCase()) || contact.number.includes(filteredContacts));
    
 
   return (

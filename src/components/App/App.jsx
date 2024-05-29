@@ -1,7 +1,6 @@
 import ContactList from "../ContactList/ContactList";
 import SearchBox from "../SearchBox/SearchBox";
 import ContactForm from "../ContactForm/ContactForm";
-import * as Yup from "yup";
 
 
 
