@@ -8,8 +8,6 @@ export default function SearchBox() {
 
     const value = useSelector(getFilterName)
     const dispatch = useDispatch();
-    
-
 
   return (
     <div>
